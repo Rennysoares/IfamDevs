@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Image, Modal, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, Image, ToastAndroid, StyleSheet, TouchableOpacity } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
 
 const NameInsert = ({navigation}) => {
@@ -8,7 +8,7 @@ const NameInsert = ({navigation}) => {
 
     const insertName = async () => {
         if (!name){
-            alert("insira corretamente")
+            ToastAndroid.show('Insira Corretamente', ToastAndroid.SHORT);
             return
         }
         else{
@@ -27,7 +27,7 @@ const NameInsert = ({navigation}) => {
         
         <TextInput
           style={styles.input}
-          placeholder="Nome"
+          placeholder="Seu primeiro nome"
           value={name}
           onChangeText={text => setName(text)}
         />

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet, ToastAndroid} from 'react-native';
 import * as SecureStore from 'expo-secure-store';
 
 const AgeInsert = ({navigation}) => {
@@ -8,7 +8,7 @@ const AgeInsert = ({navigation}) => {
     
     const insertAge = async () => {
         if (!age){
-            alert("insira corretamente")
+            ToastAndroid.show('Insira Corretamente', ToastAndroid.SHORT);
             return
         }
         else{

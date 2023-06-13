@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { TouchableOpacity, Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Entypo, MaterialIcons, Ionicons} from '@expo/vector-icons'
 import * as SecureStore from 'expo-secure-store';
@@ -11,14 +12,16 @@ import Settings from './pages/Settings';
 import Welcome from './components/Welcome';
 
 import ButtonPlus from './components/ButtonPlus';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import NameInsert from './components/NameInsert';
 import AgeInsert from './components/AgeInsert';
 
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator()
+const Stack = createStackNavigator();
+
 
 function RouteWelcome({ navigation }){
   return(
@@ -37,10 +40,10 @@ function RouteWelcome({ navigation }){
 }
 
 export default function MyTabs() {
-
+  
   return (
     <Tab.Navigator
-    initialRouteName='RouteWelcome'
+    initialRouteName='Home'
       screenOptions={{
         tabBarStyle:{
           backgroundColor: '#222',
@@ -58,7 +61,8 @@ export default function MyTabs() {
         options={{
           tabBarIcon:({size, color})=>(
             <Entypo name='home' size={size} color={color}/>
-          )
+          ),
+          title: 'Página Inicial'
         }}
       >
         {({navigation}) => <Home navigation={navigation} />}
@@ -69,7 +73,8 @@ export default function MyTabs() {
         options={{
           tabBarIcon:({size, color})=>(
             <MaterialIcons name='notes' size={size} color={color}/>
-          )
+          ),
+          title: 'Anotações'
         }}
       />
       <Tab.Screen
@@ -77,27 +82,31 @@ export default function MyTabs() {
        component={AddNotes}
        options={{
         tabBarLabel: " ",
+        tabBarStyle:{display: 'none'},
         tabBarIcon:({size, color})=>(
           <ButtonPlus size={size} color={color}/>
-        )
+        ),
       }}
       />
       <Tab.Screen
         name="Content"
-        component={Content}
         options={{
           tabBarIcon:({focused, size, color})=>(
             <Entypo name='book' focused={focused} size={size} color={color}/>
-          )
+          ),
+          title: 'Conteúdos'
         }}
-      />
+      >
+        {({navigation}) => <Content navigation={navigation} />}
+      </Tab.Screen>
       <Tab.Screen
         name="Settings"
         component={Settings}
         options={{
           tabBarIcon:({size, color})=>(
             <Ionicons name='settings-sharp' size={size} color={color}/>
-          )
+          ),
+          title: 'Configurações'
         }}
       />
       <Tab.Screen
@@ -105,7 +114,7 @@ export default function MyTabs() {
         component={RouteWelcome}
         options={{
           tabBarItemStyle: { display: 'none' },
-          tabBarStyle: { display: 'none' }
+          tabBarStyle: { display: 'none' },
         }}
       />
         
