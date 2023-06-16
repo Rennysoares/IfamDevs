@@ -1,18 +1,23 @@
 import { StyleSheet, Text, View } from 'react-native';
 
+import { SafeAreaView } from 'react-native-safe-area-context';
+
 export default function Settings() {
+  const images = [{
+    props: {
+      source: require('../../assets/react-original.png'),
+    },
+  },]
   return (
-    <View style={styles.container}>
+    <SafeAreaView>
       <Text>Settings</Text>
-    </View>
+
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });

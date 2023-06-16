@@ -43,7 +43,7 @@ export default function MyTabs() {
   
   return (
     <Tab.Navigator
-    initialRouteName='Home'
+    initialRouteName='RouteWelcome'
       screenOptions={{
         tabBarStyle:{
           backgroundColor: '#222',

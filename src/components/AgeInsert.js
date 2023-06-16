@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet, ToastAndroid} from 'react-native';
 import * as SecureStore from 'expo-secure-store';
+import { StatusBar } from 'expo-status-bar';
 
 const AgeInsert = ({navigation}) => {
 
@@ -19,6 +20,7 @@ const AgeInsert = ({navigation}) => {
 
     return (
       <View style={styles.container}>
+        <StatusBar backgroundColor='#FD043C'/>
         <Text style={styles.title}>Insira sua idade</Text>
         <Image
             source={require('../../assets/ageilust.png')}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Image, ToastAndroid, StyleSheet, TouchableOpacity } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
+import { StatusBar } from 'expo-status-bar';
 
 const NameInsert = ({navigation}) => {
 
@@ -19,6 +20,7 @@ const NameInsert = ({navigation}) => {
 
     return (
       <View style={styles.container}>
+        <StatusBar backgroundColor='#F2A42B'/>
         <Text style={styles.title}>Qual é o seu nome?</Text>
         <Image
             source={require('../../assets/duvidilustr.png')}
